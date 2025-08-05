@@ -1,0 +1,514 @@
+/* About Page Styles */
+.about-page {
+  position: relative;
+
+  overflow-x: hidden;
+
+  min-height: 100vh;
+
+  font-family: Montserrat, sans-serif;
+  color: var(--color-text);
+
+  background-color: var(--color-background);
+}
+
+/* Hero Section */
+.about-hero {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+
+  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-pink) 100%);
+}
+
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.about-hero-title {
+  margin-bottom: 1rem;
+
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 800;
+  line-height: 1.1;
+
+  background: linear-gradient(45deg, var(--color-text), var(--color-blue));
+  background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.about-hero-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.4;
+
+  opacity: 0.8;
+}
+
+/* Floating Orbs */
+.about-hero-visual {
+  pointer-events: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.floating-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  opacity: 0.3;
+  filter: blur(1px);
+
+  animation: float 6s ease-in-out infinite;
+}
+
+.orb-1 {
+  top: 20%;
+  left: 10%;
+
+  width: 200px;
+  height: 200px;
+
+  background: var(--color-pink);
+
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  top: 60%;
+  right: 15%;
+
+  width: 150px;
+  height: 150px;
+
+  background: var(--color-blue);
+
+  animation-delay: 2s;
+}
+
+.orb-3 {
+  bottom: 20%;
+  left: 60%;
+
+  width: 100px;
+  height: 100px;
+
+  background: var(--color-green);
+
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Content Sections */
+.about-content {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+}
+
+.about-section {
+  margin-bottom: 8rem;
+  padding: 2rem 0;
+  opacity: 0;
+}
+
+.section-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-title {
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: 4rem;
+
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+}
+
+.section-title::after {
+  content: '';
+
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+
+  background: linear-gradient(90deg, var(--color-pink), var(--color-blue));
+}
+
+/* Introduction Section */
+.intro-section {
+  margin-top: 2rem;
+}
+
+.intro-text {
+  margin-top: 2rem;
+}
+
+.intro-text p {
+  max-width: 100%;
+  margin-bottom: 2rem;
+
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: left;
+
+  opacity: 0.9;
+}
+
+/* Experience Section */
+.experience-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.experience-timeline::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 2px;
+
+  background: linear-gradient(to bottom, var(--color-pink), var(--color-blue));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: -2rem;
+
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--color-background);
+  border-radius: 50%;
+
+  background: var(--color-blue);
+}
+
+.timeline-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.timeline-date {
+  display: block;
+
+  margin-bottom: 1rem;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-pink);
+}
+
+.timeline-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.skill-item {
+  padding: 1.5rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 12px;
+
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+}
+
+.skill-name {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.skill-bar {
+  overflow: hidden;
+
+  height: 8px;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+
+  background: rgb(255 255 255 / 10%);
+}
+
+.skill-progress {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-pink), var(--color-blue));
+  transition: width 1s ease-out;
+}
+
+.skill-percentage {
+  float: right;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Philosophy Section */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.philosophy-item {
+  padding: 2rem;
+  border: 1px solid rgb(255 255 255 / 10%);
+  border-radius: 16px;
+
+  text-align: center;
+
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(10px);
+
+  transition: transform 0.3s ease;
+}
+
+.philosophy-item:hover {
+  transform: translateY(-10px);
+}
+
+.philosophy-icon {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.philosophy-item h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-blue);
+}
+
+.philosophy-item p {
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Fun Facts Section */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.fact-item {
+  transform: perspective(1000px) rotateX(0deg);
+
+  padding: 2rem;
+  border-radius: 20px;
+
+  color: white;
+  text-align: center;
+
+  background: linear-gradient(135deg, var(--color-pink), var(--color-blue));
+
+  transition: transform 0.3s ease;
+}
+
+.fact-item:hover {
+  transform: perspective(1000px) rotateX(10deg) translateY(-10px);
+}
+
+.fact-number {
+  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 30%);
+}
+
+.fact-label {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (width <= 768px) {
+  .about-content {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .about-section {
+    margin-bottom: 6rem;
+    padding: 1rem 0;
+  }
+
+  .section-title {
+    margin-bottom: 3rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .experience-timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+  }
+
+  .floating-orb {
+    opacity: 0.1;
+  }
+
+  .intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+
+@media (width <= 480px) {
+  .facts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero {
+    padding: 2rem 1rem;
+  }
+
+  .orb-1,
+  .orb-2,
+  .orb-3 {
+    display: none;
+  }
+}
+
+/* Dark theme adjustments */
+.dark-theme .skill-item,
+.dark-theme .philosophy-item {
+  border-color: rgb(255 255 255 / 20%);
+  background: rgb(0 0 0 / 20%);
+}
+
+.dark-theme .skill-item:hover,
+.dark-theme .philosophy-item:hover {
+  box-shadow: 0 10px 30px rgb(255 255 255 / 10%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: linear-gradient(to bottom, var(--color-pink), var(--color-blue));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--color-blue), var(--color-pink));
+}
+
+/* Fix for overlapping content */
+.about-page * {
+  box-sizing: border-box;
+}
+
+.about-page p,
+.about-page h1,
+.about-page h2,
+.about-page h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.about-page p {
+  margin-bottom: 1rem;
+}
+
+.about-page h2 {
+  margin-bottom: 2rem;
+}
+
+.about-page h3 {
+  margin-bottom: 1rem;
+}

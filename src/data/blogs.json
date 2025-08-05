@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "title": "Khám Phá Thế Giới Three.js: Tạo Trải Nghiệm 3D Tuyệt Vời",
+    "subtitle": "Hướng dẫn toàn diện về việc tạo ra những ứng dụng web 3D ấn tượng với Three.js và WebGL",
+    "content": "# Giới thiệu về Three.js\n\nThree.js là một thư viện JavaScript mạnh mẽ giúp tạo ra những trải nghiệm 3D tuyệt vời trên web. Với Three.js, bạn có thể xây dựng từ những game đơn giản đến những ứng dụng 3D phức tạp.\n\n## Bắt đầu với Three.js\n\nĐể bắt đầu với Three.js, bạn cần hiểu ba thành phần cơ bản: Scene, Camera và Renderer. Đây là nền tảng của mọi ứng dụng Three.js.\n\nScene là không gian 3D nơi bạn đặt các đối tượng. Camera xác định góc nhìn của người dùng. Renderer chịu trách nhiệm vẽ scene lên canvas.\n\n## Tạo hình học và vật liệu\n\nThree.js cung cấp nhiều loại hình học có sẵn như BoxGeometry, SphereGeometry, PlaneGeometry. Bạn cũng có thể tạo hình học tùy chỉnh hoặc import từ các phần mềm 3D như Blender.\n\nVật liệu quyết định cách bề mặt của đối tượng phản ứng với ánh sáng. MeshBasicMaterial không bị ảnh hưởng bởi ánh sáng, trong khi MeshLambertMaterial và MeshPhongMaterial có thể tạo ra hiệu ứng ánh sáng phức tạp hơn.\n\n## Ánh sáng và bóng đổ\n\nÁnh sáng là yếu tố quan trọng để tạo nên không gian 3D chân thực. Three.js hỗ trợ nhiều loại ánh sáng: AmbientLight, DirectionalLight, PointLight, SpotLight.\n\nBóng đổ thêm chiều sâu cho scene. Để sử dụng bóng đổ, bạn cần enable shadow map trong renderer, đặt light để cast shadow, và object để receive shadow.",
+    "coverImage": "/assets/images/img1_.jpg",
+    "video": "/assets/textures/kda.mp4",
+    "author": {
+      "name": "Văn Huy",
+      "avatar": "/assets/images/img2_.jpg",
+      "bio": "Fullstack Developer với niềm đam mê về công nghệ 3D và trải nghiệm người dùng. Chuyên sâu về React, Three.js và các công nghệ web hiện đại."
+    },
+    "publishedAt": "2024-01-15T10:00:00Z",
+    "readTime": 8,
+    "tags": ["Three.js", "WebGL", "3D", "JavaScript", "Web Development"],
+    "category": "Technology"
+  },
+  {
+    "id": "2",
+    "title": "Thiết Kế UI/UX Minimal: Nghệ Thuật Của Sự Đơn Giản",
+    "subtitle": "Khám phá triết lý thiết kế minimal và cách áp dụng vào dự án thực tế",
+    "content": "# Triết lý Minimal Design\n\nThiết kế minimal không chỉ là việc loại bỏ các yếu tố thừa thải, mà là nghệ thuật của việc giữ lại những gì thực sự cần thiết. 'Less is more' - câu nói nổi tiếng của Ludwig Mies van der Rohe vẫn còn nguyên giá trị trong thiết kế hiện đại.\n\n## Nguyên tắc cơ bản\n\nMinimal design dựa trên những nguyên tắc cốt lõi: không gian trắng, typography rõ ràng, bảng màu hạn chế, và tập trung vào nội dung. Mỗi yếu tố trong thiết kế phải có lý do tồn tại.\n\nKhông gian trắng (whitespace) không phải là không gian trống, mà là yếu tố thiết kế tích cực giúp tạo ra sự cân bằng và hướng dẫn mắt người dùng.\n\n## Áp dụng vào Web Design\n\nTrong web design, minimal approach giúp cải thiện tốc độ tải trang, tăng khả năng sử dụng và tạo ra trải nghiệm người dùng mượt mà. Grid system đơn giản, navigation rõ ràng và call-to-action nổi bật là những yếu tố quan trọng.\n\n## Color Palette\n\nBảng màu trong thiết kế minimal thường giới hạn ở 2-3 màu chủ đạo. Màu trung tính như trắng, xám, đen tạo nền tảng, trong khi màu accent được sử dụng để nhấn mạnh các yếu tố quan trọng.",
+    "coverImage": "/assets/images/img3_.jpg",
+    "author": {
+      "name": "Văn Huy",
+      "avatar": "/assets/images/img2_.jpg",
+      "bio": "Fullstack Developer với niềm đam mê về công nghệ 3D và trải nghiệm người dùng. Chuyên sâu về React, Three.js và các công nghệ web hiện đại."
+    },
+    "publishedAt": "2024-01-10T14:30:00Z",
+    "readTime": 6,
+    "tags": ["UI/UX", "Design", "Minimal", "Web Design", "User Experience"],
+    "category": "Design"
+  }
+]

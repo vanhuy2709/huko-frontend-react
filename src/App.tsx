@@ -1,7 +1,13 @@
-import Canvas from '@components/Canvas'
+import '@styles/index.css';
+import React from 'react';
+import HomePage from '@pages/HomePage';
 
-export function App() {
-  return <Canvas />
-}
+const App: React.FC = () => {
+  return (
+    <>
+      <HomePage />
+    </>
+  );
+};
 
-export default App
+export default App;

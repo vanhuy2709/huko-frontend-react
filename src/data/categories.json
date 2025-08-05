@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "youtube",
+    "label": "YouTube",
+    "description": "All about YouTube content",
+    "icon": "youtube",
+    "slug": "youtube"
+  },
+  {
+    "id": 2,
+    "name": "tiktok",
+    "label": "TikTok",
+    "description": "All about TikTok content",
+    "icon": "tiktok",
+    "slug": "tiktok"
+  }
+]

@@ -1,24 +1,33 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
-import tailwindcss from '@tailwindcss/vite'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), tsconfigPaths()],
+  plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true
+    }),
+    react()
+  ],
+  base: './',
+  publicDir: './public',
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-      '@assets': resolve(__dirname, 'src/assets'),
-      '@class': resolve(__dirname, 'src/class'),
+      '@public': resolve(__dirname, 'public'),
       '@components': resolve(__dirname, 'src/components'),
+      '@constants': resolve(__dirname, 'src/constants'),
+      '@context': resolve(__dirname, 'src/context'),
+      '@data': resolve(__dirname, 'src/data'),
       '@hooks': resolve(__dirname, 'src/hooks'),
-      '@layout': resolve(__dirname, 'src/layout'),
-      '@lib': resolve(__dirname, 'src/lib'),
-      '@pages': resolve(__dirname, 'src/pages'),
+      '@types': resolve(__dirname, 'src/types'),
+      '@utils': resolve(__dirname, 'src/utils'),
       '@styles': resolve(__dirname, 'src/styles'),
-      '@utils': resolve(__dirname, 'src/utils')
+      '@screens': resolve(__dirname, 'src/screens'),
+      '@classes': resolve(__dirname, 'src/classes'),
+      '@pages': resolve(__dirname, 'src/pages')
     }
   }
-})
+});

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from '@tanstack/react-router';
 
 // Memoized Project Card Component
 interface ProjectCardProps {
@@ -6,46 +7,58 @@ interface ProjectCardProps {
   index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) => (
-  <div
-    className="project-card"
-    style={{
-      animationDelay: `${index * 100 + 300}ms`
-    }}
-  >
-    <div className={`project-status ${project.isPublished ? 'status-published' : 'status-draft'}`}>
-      {project.isPublished ? 'Published' : 'Draft'}
-    </div>
+const ProjectCard: React.FC<ProjectCardProps> = React.memo(({ project, index }) => {
+  const router = useRouter();
 
-    <div className="project-thumbnail">
-      <img
-        src={project.thumbnailUrl}
-        alt={project.title}
-        className="thumbnail-image"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-
-    <div className="project-content">
-      <div className="project-number">
-        {String(index + 1).padStart(2, '0')} / {new Date(project.createdAt).getFullYear()}
+  return (
+    <div
+      className="project-card"
+      style={{
+        animationDelay: `${index * 100 + 300}ms`
+      }}
+      onClick={() =>
+        router.navigate({
+          to: '/project/$projectId',
+          params: { projectId: `${project.id}` }
+        })
+      }
+    >
+      <div
+        className={`project-status ${project.isPublished ? 'status-published' : 'status-draft'}`}
+      >
+        {project.isPublished ? 'Published' : 'Draft'}
       </div>
 
-      <h3 className="project-title">{project.title}</h3>
+      <div className="project-thumbnail">
+        <img
+          src={project.thumbnailUrl}
+          alt={project.title}
+          className="thumbnail-image"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
 
-      <p className="project-description">{project.description}</p>
+      <div className="project-content">
+        <div className="project-number">
+          {String(index + 1).padStart(2, '0')} / {new Date(project.createdAt).getFullYear()}
+        </div>
 
-      <div className="project-tech">
-        {project.tags.map(tag => (
-          <span key={tag} className="tech-tag">
-            {tag}
-          </span>
-        ))}
+        <h3 className="project-title">{project.title}</h3>
+
+        <p className="project-description">{project.description}</p>
+
+        <div className="project-tech">
+          {project.tags.map(tag => (
+            <span key={tag} className="tech-tag">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-));
+  );
+});
 
 ProjectCard.displayName = 'ProjectCard';
 

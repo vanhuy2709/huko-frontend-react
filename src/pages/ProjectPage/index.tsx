@@ -24,9 +24,6 @@ const ProjectPage: React.FC = React.memo(() => {
   const [filteredProjects, setFilteredProjects] = useState<IProject[]>([]);
   const [isFiltering, setIsFiltering] = useState(false);
 
-  // Performance tracking (remove in production)
-  console.log('ProjectPage render - optimized with dynamic categories');
-
   // Fetch projects with react-query
   const {
     data: projects,

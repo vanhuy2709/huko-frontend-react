@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
             <div className="brand-icon">
               <div className="liquid-orb"></div>
             </div>
-            <span className="brand-text">Portfolio</span>
+            <span className="brand-text">HukoChi</span>
           </Link>
         </div>
 

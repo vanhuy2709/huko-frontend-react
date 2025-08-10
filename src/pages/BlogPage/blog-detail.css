@@ -303,8 +303,14 @@
 }
 
 .video-player {
-  width: 100%;
+  aspect-ratio: 16 / 9; /* Giữ tỉ lệ 16:9 */
+
+  /* width: 100%;
   height: auto;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgb(0 0 0 / 10%); */
+
+  width: 100%;
   border-radius: 12px;
   box-shadow: 0 15px 40px rgb(0 0 0 / 10%);
 }

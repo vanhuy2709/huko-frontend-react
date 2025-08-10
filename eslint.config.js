@@ -53,6 +53,7 @@ export default tseslint.config(
       'unicorn/numeric-separators-style': 'off',
       'unicorn/no-array-for-each': 'off',
       'unicorn/no-abusive-eslint-disable': "off",
+      'unicorn/prefer-dom-node-text-content': "off",
       'sonarjs/cognitive-complexity': ['warn', 15],
       'sonarjs/no-duplicate-string': 'warn',
       'sonarjs/no-identical-functions': 'error',

@@ -43,30 +43,6 @@ const ContactPage: React.FC = () => {
       yoyo: true,
       ease: 'power1.inOut'
     });
-
-    // Form inputs animation
-    const inputs = document.querySelectorAll('.form-input, .form-textarea');
-    inputs.forEach((input, index) => {
-      gsap.from(input, {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: 0.1 * index,
-        ease: 'power2.out'
-      });
-    });
-
-    // Contact cards animation
-    const cards = document.querySelectorAll('.contact-info-card');
-    cards.forEach((card, index) => {
-      gsap.from(card, {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.6,
-        delay: 0.2 + 0.1 * index,
-        ease: 'back.out(1.7)'
-      });
-    });
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -219,11 +195,11 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="contact-info-card">
+              {/* <div className="contact-info-card">
                 <div className="info-icon location-icon">📍</div>
                 <div className="info-label">Location</div>
                 <div className="info-value">Germany / UK</div>
-              </div>
+              </div> */}
 
               <div className="contact-info-card">
                 <div className="info-icon linkedin-icon">💼</div>
@@ -240,45 +216,45 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
-            {/* Social Links */}
-            <div className="social-section">
-              <h3 className="social-title">Follow Me</h3>
-              <div className="social-links">
-                <a
-                  href="https://instagram.com/hukochi"
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  📷
-                </a>
-                <a
-                  href="https://artstation.com/hukochi"
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🎨
-                </a>
-                <a
-                  href="https://twitter.com/hukochi"
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🐦
-                </a>
-                <a
-                  href="https://github.com/hukochi"
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  💻
-                </a>
-              </div>
-            </div>
+        {/* Social Links */}
+        <div className="social-section">
+          <h3 className="social-title">Follow Me</h3>
+          <div className="social-links">
+            <a
+              href="https://instagram.com/hukochi"
+              className="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📷
+            </a>
+            <a
+              href="https://artstation.com/hukochi"
+              className="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎨
+            </a>
+            <a
+              href="https://twitter.com/hukochi"
+              className="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🐦
+            </a>
+            <a
+              href="https://github.com/hukochi"
+              className="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💻
+            </a>
           </div>
         </div>
       </div>

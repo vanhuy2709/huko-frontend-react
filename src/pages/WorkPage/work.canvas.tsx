@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Image, Environment, ScrollControls, useScroll, useTexture } from '@react-three/drei';
 import { easing } from 'maath';
+import { useRouter } from '@tanstack/react-router';
 import '@utils/geometry';
 
 interface WorkCanvasProps {
@@ -93,12 +94,17 @@ function Card({ url, project, ...props }: Readonly<CardProps>) {
   const [hovered, hover] = useState(false);
   const pointerOver = (e: React.PointerEvent) => (e.stopPropagation(), hover(true));
   const pointerOut = () => hover(false);
+  const router = useRouter();
 
   // Handle click to show project details
   const handleClick = (e: React.PointerEvent) => {
     e.stopPropagation();
     if (project) {
-      console.log('Clicked project:', project);
+      router.navigate({
+        to: '/project/$projectId',
+        params: { projectId: `${project.id}` }
+      });
+      // console.log('Clicked project:', project);
       // Here you can add navigation to project detail or show modal
     }
   };

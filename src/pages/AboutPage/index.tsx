@@ -95,7 +95,7 @@ const AboutPage: React.FC<TAboutPageProps> = () => {
         {/* Introduction Section */}
         <section className="about-section intro-section">
           <div className="section-content">
-            <h2 className="section-title">Hello, I'm Van Huy</h2>
+            <h2 className="section-title">Hello, I'm HukoChi</h2>
             <div className="intro-text">
               <p>
                 I'm a creative developer with a passion for building immersive 3D web experiences.

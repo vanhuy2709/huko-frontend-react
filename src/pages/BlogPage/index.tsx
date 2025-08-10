@@ -1,30 +1,47 @@
-import { useState, useEffect } from 'react';
 import './blog.css';
 import './blog-detail.css';
-import { copyToClipboard, formatDate, shareOnFacebook, shareOnTwitter } from '@utils/format';
+import { useState, useEffect } from 'react';
+import { useParams } from '@tanstack/react-router';
+import {
+  copyToClipboard,
+  formatDate,
+  shareOnFacebook,
+  shareOnTwitter,
+  formatContent
+} from '@utils/format';
+import { URL_PATH } from '@constants/urlPath';
+import { useQuery } from '@tanstack/react-query';
+import { convertToEmbedYoutubeUrl } from '@utils/converted';
 
-// Format functions
-const formatContent = (content: string) => {
-  // Simple HTML tag removal using DOM parsing approach
-  const tempDiv = document.createElement('div');
-  tempDiv.innerHTML = content;
-  const plainText = tempDiv.textContent || '';
+// Handle fetching projects
+const fetchProjects = async (id: number): Promise<IProject[]> => {
+  const res = await fetch(`/src/data/${URL_PATH.PROJECTS}`);
+  if (!res.ok) throw new Error('Failed to fetch JSON file');
 
-  return plainText.split('\n\n').map((paragraph: string, index: number) => {
-    if (paragraph.trim()) {
-      return (
-        <p key={index} className="blog-paragraph">
-          {paragraph}
-        </p>
-      );
-    }
-    return null;
-  });
+  const listProject: IProject[] = await res.json();
+  return listProject.filter(project => project.id === id);
 };
 
-const BlogPage = () => {
+const BlogPage: React.FC = () => {
   const [selectedBlog, setSelectedBlog] = useState<IProject | null>(null);
   const [readingProgress, setReadingProgress] = useState(0);
+  const { projectId } = useParams({ from: '/project_/$projectId' });
+  // Fetch projects with react-query
+  const {
+    data: projects
+    // isLoading: isProjectsLoading,
+    // isError: isProjectsError,
+    // error: projectsError
+  } = useQuery({
+    queryKey: ['projects'],
+    queryFn: () => fetchProjects(Number(projectId)),
+    select: data => data[0] || null,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes (previously cacheTime)
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: 'always'
+  });
 
   useEffect(() => {
     if (!selectedBlog) return;
@@ -98,9 +115,7 @@ const BlogPage = () => {
             Blog
           </button>
           <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-current">
-            {'Khám Phá Thế Giới Three.js: Tạo Trải Nghiệm 3D Tuyệt Vời'}
-          </span>
+          <span className="breadcrumb-current">{projects && projects.title}</span>
         </div>
       </nav>
 
@@ -113,15 +128,9 @@ const BlogPage = () => {
             <span className="blog-read-time">{8} phút đọc</span>
           </div>
 
-          <h1 className="blog-title">
-            {'Khám Phá Thế Giới Three.js: Tạo Trải Nghiệm 3D Tuyệt Vời'}
-          </h1>
+          <h1 className="blog-title">{projects && projects.title}</h1>
 
-          <p className="blog-subtitle">
-            {
-              'Hướng dẫn toàn diện về việc tạo ra những ứng dụng web 3D ấn tượng với Three.js và WebGL'
-            }
-          </p>
+          <p className="blog-subtitle">{projects && projects.description}</p>
 
           <div className="blog-author-info">
             <img src={'/assets/images/img2_.jpg'} alt={'Văn Huy'} className="author-avatar" />
@@ -137,7 +146,7 @@ const BlogPage = () => {
       <div className="blog-cover">
         <img
           src={'/assets/images/img1_.jpg'}
-          alt={'Khám Phá Thế Giới Three.js: Tạo Trải Nghiệm 3D Tuyệt Vời'}
+          alt={projects && projects.title}
           className="cover-image"
         />
       </div>
@@ -148,19 +157,23 @@ const BlogPage = () => {
           {/* Video if exists */}
           {
             <div className="blog-video">
-              <video controls className="video-player" poster={'/assets/images/img1_.jpg'}>
-                <source src={'/assets/textures/kda.mp4'} type="video/mp4" />
-                Trình duyệt của bạn không hỗ trợ video.
-              </video>
+              <iframe
+                className="video-player"
+                // width="560"
+                // height="315"
+                src={
+                  projects ? (convertToEmbedYoutubeUrl(projects.videoUrl) ?? undefined) : undefined
+                }
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           }
 
           {/* Article Content */}
-          <div className="blog-article">
-            {formatContent(
-              '# Giới thiệu về Three.js\n\nThree.js là một thư viện JavaScript mạnh mẽ giúp tạo ra những trải nghiệm 3D tuyệt vời trên web. Với Three.js, bạn có thể xây dựng từ những game đơn giản đến những ứng dụng 3D phức tạp.\n\n## Bắt đầu với Three.js\n\nĐể bắt đầu với Three.js, bạn cần hiểu ba thành phần cơ bản: Scene, Camera và Renderer. Đây là nền tảng của mọi ứng dụng Three.js.\n\nScene là không gian 3D nơi bạn đặt các đối tượng. Camera xác định góc nhìn của người dùng. Renderer chịu trách nhiệm vẽ scene lên canvas.\n\n## Tạo hình học và vật liệu\n\nThree.js cung cấp nhiều loại hình học có sẵn như BoxGeometry, SphereGeometry, PlaneGeometry. Bạn cũng có thể tạo hình học tùy chỉnh hoặc import từ các phần mềm 3D như Blender.\n\nVật liệu quyết định cách bề mặt của đối tượng phản ứng với ánh sáng. MeshBasicMaterial không bị ảnh hưởng bởi ánh sáng, trong khi MeshLambertMaterial và MeshPhongMaterial có thể tạo ra hiệu ứng ánh sáng phức tạp hơn.\n\n## Ánh sáng và bóng đổ\n\nÁnh sáng là yếu tố quan trọng để tạo nên không gian 3D chân thực. Three.js hỗ trợ nhiều loại ánh sáng: AmbientLight, DirectionalLight, PointLight, SpotLight.\n\nBóng đổ thêm chiều sâu cho scene. Để sử dụng bóng đổ, bạn cần enable shadow map trong renderer, đặt light để cast shadow, và object để receive shadow.'
-            )}
-          </div>
+          <div className="blog-article">{formatContent(projects ? projects.content : '')}</div>
 
           {/* Tags */}
           {['Three.js', 'WebGL', '3D', 'JavaScript', 'Web Development'].length > 0 && (

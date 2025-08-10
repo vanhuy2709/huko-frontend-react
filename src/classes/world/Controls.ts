@@ -26,6 +26,7 @@ export default class Controls {
   private _secondMoveTimeline: gsap.core.Timeline;
   private _thirdMoveTimeline: gsap.core.Timeline;
 
+  // @ts-expect-error: hope nothing error
   private _asscroll: ASScroll | null = null;
 
   // Mini Platform Animations

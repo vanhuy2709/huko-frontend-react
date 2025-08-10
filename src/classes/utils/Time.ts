@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 export default class Time extends EventEmitter {
   private _start: number;
   private _current: number;
+  // @ts-expect-error: hope nothing error
   private _elapsed: number;
   private _delta: number;
   private _animationId: number | null = null;

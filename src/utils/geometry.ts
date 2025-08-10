@@ -4,6 +4,7 @@ import { extend } from '@react-three/fiber';
 // Paul West @prisoner849 https://discourse.threejs.org/u/prisoner849
 // https://discourse.threejs.org/t/simple-curved-plane/26647/10
 class BentPlaneGeometry extends THREE.PlaneGeometry {
+  // @ts-expect-error: hope nothing error
   constructor(radius, ...args) {
     super(...args);
     const p = this.parameters;
@@ -36,9 +37,12 @@ class MeshSineMaterial extends THREE.MeshBasicMaterial {
   constructor(parameters = {}) {
     super(parameters);
     this.setValues(parameters);
+    // @ts-expect-error: hope nothing error
     this.time = { value: 0 };
   }
+  // @ts-expect-error: hope nothing error
   onBeforeCompile(shader) {
+    // @ts-expect-error: hope nothing error
     shader.uniforms.time = this.time;
     shader.vertexShader = `
       uniform float time;

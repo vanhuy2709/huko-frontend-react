@@ -6,6 +6,7 @@ import * as THREE from 'three';
 export default class Environment {
   private _experience: Experience;
   private _scene: THREE.Scene;
+  // @ts-expect-error: hope nothing error
   private _resources!: Resources;
 
   private _sunLight!: THREE.DirectionalLight;

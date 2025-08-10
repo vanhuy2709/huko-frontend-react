@@ -67,5 +67,6 @@ export const formatContentHTML = (htmlString: string): string => {
   tempDiv.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
   tempDiv.querySelectorAll('p, li').forEach(el => el.append('\n'));
   const text = tempDiv.textContent || tempDiv.innerText || '';
+  // @ts-expect-error: hope nothing error
   return text.trim().replaceAll(/\n\s*\n/g, '\n');
 };

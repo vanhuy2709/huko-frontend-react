@@ -7,14 +7,14 @@ import { URL_PATH } from '@constants/urlPath';
 
 // Handle fetching projects
 const fetchProjects = async (): Promise<IProject[]> => {
-  const res = await fetch(`/src/data/${URL_PATH.PROJECTS}`);
+  const res = await fetch(`/data/${URL_PATH.PROJECTS}`);
   if (!res.ok) throw new Error('Failed to fetch JSON file');
   return res.json();
 };
 
 // Handle fetching categories
 const fetchCategories = async (): Promise<ICategory[]> => {
-  const res = await fetch(`/src/data/${URL_PATH.CATEGORIES}`);
+  const res = await fetch(`/data/${URL_PATH.CATEGORIES}`);
   if (!res.ok) throw new Error('Failed to fetch categories');
   return res.json();
 };

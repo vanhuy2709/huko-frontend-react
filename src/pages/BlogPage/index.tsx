@@ -15,7 +15,7 @@ import { convertToEmbedYoutubeUrl } from '@utils/converted';
 
 // Handle fetching projects
 const fetchProjects = async (id: number): Promise<IProject[]> => {
-  const res = await fetch(`/src/data/${URL_PATH.PROJECTS}`);
+  const res = await fetch(`/data/${URL_PATH.PROJECTS}`);
   if (!res.ok) throw new Error('Failed to fetch JSON file');
 
   const listProject: IProject[] = await res.json();
